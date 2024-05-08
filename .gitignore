@@ -1,7 +1,10 @@
 # Config
 .vscode
+# Virtualenv
 .venv
 venv
 # Database
 *.sqlite3
 *.db
+# Output
+output/*

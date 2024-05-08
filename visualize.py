@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Database schema
+# https://codeberg.org/fynngodau/usageDirect/src/branch/main/Application/schemas/godau.fynn.usagedirect.persistence.HistoryDatabase/5.json
+
+import os
 import pandas as pd
 import sqlite3
-import plotly.express as px
+import plotly.graph_objects as go
+import plotly.io as pio
 
 # Connect to SQLite DB
 DB = "usageDirect-history.sqlite3"
 conn = sqlite3.connect(DB)
+output_dir = "output"
 
 
 def sql_query(query_file, conn):
@@ -21,10 +27,28 @@ def sql_query(query_file, conn):
     return df
 
 
+def generate_sunburst_chart(df):
+    data = dict(
+        type="sunburst",
+        labels=df["applicationId"],
+        parents=[""] * len(df),
+        values=df["totalUsage"],
+    )
+    # Create layout
+    layout = go.Layout(margin=dict(t=0, l=0, r=0, b=0))
+
+    fig = go.Figure(data=[data], layout=layout)
+
+    output_file = os.path.join(output_dir, "sunburst.html")
+    pio.write_html(fig, output_file)
+
+
 # print(sql_query("query.sql", conn))
 df = sql_query("grouped.sql", conn)
-
 conn.close()
 
-fig = px.sunburst(df, path=["applicationId"], values="totalUsage")
-fig.show()
+
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+generate_sunburst_chart(df)
