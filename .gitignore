@@ -1,0 +1,7 @@
+# Config
+.vscode
+.venv
+venv
+# Database
+*.sqlite3
+*.db
