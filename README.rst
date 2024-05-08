@@ -17,14 +17,13 @@ This is mainly a silly little project to add some charts to:
 
 .. tip:: Chances are you won't find it useful.
 
-.. sidebar:: Ranting
-    Although so far I only find sidebar and built-in admonitions useful.
+I use it to learn the standard library `sqlite3` in Python, *basic visualization in Plotly*,
+and **grammer of reStructuredText**.
+
+.. note:: Although so far I only find sidebar and built-in admonitions useful.
     The benefits are so marginal [#f1]_ I can't be convinced to learn it any further.
     Probably org mode is better.
     Let alone Markdown.
-
-I use it to learn the standard library `sqlite3` in Python, *basic visualization in Plotly*,
-    and **grammer of reStructuredText**.
 
 .. [#f1] The ranting is caused by my not using extension. reStructuredText is much more powerful with that.
 
@@ -32,8 +31,6 @@ Usage
 -----
 
 .. code-block:: python
-    :linenos:
-    :emphasize-lines: 2
 
     pip install -r requirements.txt
     python visualize.py
