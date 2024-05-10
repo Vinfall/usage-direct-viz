@@ -1,1 +1,4 @@
 * text=auto
+*.sql text linguist-detectable=true
+*.sql linguist-language=sql
+
