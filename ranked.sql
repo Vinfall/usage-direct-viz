@@ -1,10 +1,19 @@
 SELECT day,
     timeUsed,
-    applicationId
-FROM usageStats
-WHERE hidden = 0
-    AND day > 0 -- epoch day
-    AND applicationId IN (
+    applicationId,
+    DENSE_RANK() OVER (
+        ORDER BY total_time DESC
+    ) as rank
+FROM (
+        SELECT day,
+            timeUsed,
+            applicationId,
+            SUM(timeUsed) OVER (PARTITION BY applicationId) as total_time
+        FROM usageStats
+        WHERE hidden = 0
+            AND day > 0 -- epoch day
+    ) t
+WHERE applicationId IN (
         SELECT applicationId -- only list top used applicationId
         FROM (
                 SELECT applicationId,

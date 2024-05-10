@@ -67,6 +67,7 @@ def generate_stacked_line_chart(df):
         labels={"day": "Day", "timeUsed": "Time Used"},
         line_group="applicationId",
         color="applicationId",
+        line_dash="rank",
     )
     fig.update_traces(mode="lines", stackgroup="one")
 
