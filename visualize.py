@@ -69,7 +69,7 @@ def generate_stacked_line_chart(df):
         color="applicationId",
         line_dash="rank",
     )
-    fig.update_traces(mode="lines", stackgroup="one")
+    fig.update_traces(mode="lines", legendgroup="one")
 
     output_file = os.path.join(output_dir, "stacked-line.html")
     pio.write_html(fig, output_file)
