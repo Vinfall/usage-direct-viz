@@ -37,7 +37,7 @@ Usage
 
 Now check files in `output` directory.
 
-Ceveats
+Caveats
 ~~~~~~~
 
 The `database schema`_ of usageDirect is kinda weird, especially the `epochDay`_ part,
