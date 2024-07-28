@@ -7,22 +7,22 @@
 # https://plotly.com/python/sunburst-charts/
 
 import os
-import pandas as pd
 import sqlite3
+
+import pandas as pd
+import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
-import plotly.express as px
-
 
 # Connect to SQLite DB
 DB = "usageDirect-history.sqlite3"
-conn = sqlite3.connect(DB)
-output_dir = "output"
+DB_CONN = sqlite3.connect(DB)
+OUTPUT_DIR = "output"
 
 
 def sql_query(query_file, conn):
     # Read query from file
-    with open(query_file, "r") as file:
+    with open(query_file, "r", encoding="utf-8") as file:
         query = file.read()
 
     # Run SQL query and save to DataFrame
@@ -32,18 +32,18 @@ def sql_query(query_file, conn):
 
 
 def generate_sunburst_chart(df):
-    data = dict(
-        type="sunburst",
-        labels=df["applicationId"],
-        parents=[""] * len(df),
-        values=df["totalUsage"],
-    )
+    data = {
+        "type": "sunburst",
+        "labels": df["applicationId"],
+        "parents": [""] * len(df),
+        "values": df["totalUsage"],
+    }
     # Create layout
-    layout = go.Layout(margin=dict(t=0, l=0, r=0, b=0))
+    layout = go.Layout(margin={"t": 0, "l": 0, "r": 0, "b": 0})
 
     fig = go.Figure(data=[data], layout=layout)
 
-    output_file = os.path.join(output_dir, "sunburst.html")
+    output_file = os.path.join(OUTPUT_DIR, "sunburst.html")
     pio.write_html(fig, output_file)
 
 
@@ -54,7 +54,7 @@ def generate_nested_treemap(df):
         )
     )
 
-    output_file = os.path.join(output_dir, "nested-treemap.html")
+    output_file = os.path.join(OUTPUT_DIR, "nested-treemap.html")
     pio.write_html(fig, output_file)
 
 
@@ -71,17 +71,17 @@ def generate_stacked_line_chart(df):
     )
     fig.update_traces(mode="lines", legendgroup="one")
 
-    output_file = os.path.join(output_dir, "stacked-line.html")
+    output_file = os.path.join(OUTPUT_DIR, "stacked-line.html")
     pio.write_html(fig, output_file)
 
 
-df_ranked = sql_query("ranked.sql", conn)
-df_grouped = sql_query("grouped.sql", conn)
-conn.close()
+df_ranked = sql_query("ranked.sql", DB_CONN)
+df_grouped = sql_query("grouped.sql", DB_CONN)
+DB_CONN.close()
 
 
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
+if not os.path.exists(OUTPUT_DIR):
+    os.makedirs(OUTPUT_DIR)
 
 generate_stacked_line_chart(df_ranked)
 generate_sunburst_chart(df_grouped)
