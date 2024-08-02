@@ -4,7 +4,7 @@
 .venv
 venv
 # Database
-*.sqlite3
+*.sqlite3*
 *.db
 # Output
 output/*
