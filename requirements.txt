@@ -1,2 +1,2 @@
-pandas
+pandas>=2.2.3
 plotly>=5.22.0
