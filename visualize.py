@@ -6,6 +6,14 @@
 # Plotly sunburst
 # https://plotly.com/python/sunburst-charts/
 
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "pandas>=2.2.3",
+#   "plotly>=5.22.0"
+# ]
+# ///
+
 import os
 import sqlite3
 
