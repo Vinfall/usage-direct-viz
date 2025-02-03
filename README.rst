@@ -35,6 +35,9 @@ Usage
     pip install -r requirements.txt
     python visualize.py
 
+    # it's easier with uv, not need to manage venv yourself
+    uv run visualize.py
+
 Now check files in `output` directory.
 
 Caveats
