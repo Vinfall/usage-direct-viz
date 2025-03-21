@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 # Database schema
 # https://codeberg.org/fynngodau/usageDirect/src/branch/main/Application/schemas/godau.fynn.usagedirect.persistence.HistoryDatabase/5.json
-# Plotly sunburst
-# https://plotly.com/python/sunburst-charts/
+# Plotly sunburst: https://plotly.com/python/sunburst-charts/
 
 # /// script
 # requires-python = ">=3.11"
@@ -30,13 +28,11 @@ OUTPUT_DIR = "output"
 
 def sql_query(query_file, conn):
     # Read query from file
-    with open(query_file, "r", encoding="utf-8") as file:
+    with open(query_file, encoding="utf-8") as file:
         query = file.read()
 
     # Run SQL query and save to DataFrame
-    df = pd.read_sql_query(query, conn)
-
-    return df
+    return pd.read_sql_query(query, conn)
 
 
 def generate_sunburst_chart(df):
