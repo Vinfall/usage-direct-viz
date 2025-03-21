@@ -32,7 +32,7 @@ Usage
 
 .. code-block:: python
 
-    pip install -r requirements.txt
+    pip install .
     python visualize.py
 
     # it's easier with uv, not need to manage venv yourself

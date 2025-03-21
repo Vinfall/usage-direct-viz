@@ -1,0 +1,37 @@
+[project]
+name = "usage-redirect-viz"
+keywords = ["database", "android", "visualization"]
+requires-python = ">=3.10"
+readme = { file = "README.rst", content-type = "text/x-rst" }
+classifiers = ["Private :: Do Not Upload"]
+dependencies = ["pandas>=2.2.3", "plotly>=5.22.0"]
+
+[tool.ruff]
+# force-exclude = true
+unsafe-fixes = true
+
+# https://docs.astral.sh/ruff/rules/
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "E501", # EditorConfig
+  "COM", # commas
+  "D1", # docstring
+  "D212",
+  "D203", # prefer D211
+  "ERA", # commented-out-code
+  "FIX", # fixme
+  "TD002", # todo
+  "TD003",
+  "PLR2004", # magic-value-comparison
+  "PTH", # flake8-use-pathlib: slower than os
+  "RET505", # superfluous-else-return
+  "T20", # print
+  # project-specific
+  "ANN",
+]
+# unfixable = ["F401"]
+
+[[tool.mypy.overrides]]
+module = ["pandas.*", "plotly.*"]
+ignore_missing_imports = true
