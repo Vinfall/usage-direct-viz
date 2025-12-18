@@ -32,6 +32,5 @@ ignore = [
 ]
 # unfixable = ["F401"]
 
-[[tool.mypy.overrides]]
-module = ["pandas.*", "plotly.*"]
-ignore_missing_imports = true
+[tool.ty.rules]
+unresolved-import = "ignore" # .venv excluded from vsc workspace
