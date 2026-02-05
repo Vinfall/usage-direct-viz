@@ -1,8 +1,8 @@
 [project]
 name = "usage-redirect-viz"
-keywords = ["database", "android", "visualization"]
-requires-python = ">=3.10"
 readme = { file = "README.rst", content-type = "text/x-rst" }
+requires-python = ">=3.10"
+keywords = ["android", "database", "visualization"]
 classifiers = ["Private :: Do Not Upload"]
 dependencies = ["pandas>=2.2.3", "plotly>=5.22.0"]
 
