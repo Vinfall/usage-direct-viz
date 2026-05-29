@@ -5,6 +5,7 @@ requires-python = ">=3.10"
 keywords = ["android", "database", "visualization"]
 classifiers = ["Private :: Do Not Upload"]
 dependencies = ["pandas>=2.2.3", "plotly>=5.22.0"]
+dynamic = ["version"]
 
 [tool.ruff]
 # force-exclude = true
@@ -33,4 +34,4 @@ ignore = [
 # unfixable = ["F401"]
 
 [tool.ty.rules]
-unresolved-import = "ignore" # .venv excluded from vsc workspace
+unresolved-import = "ignore" # .venv excluded from vsc/zed
