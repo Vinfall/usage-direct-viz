@@ -7,8 +7,8 @@
 # /// script
 # requires-python = ">=3.11"
 # dependencies = [
-#   "pandas>=2.2.3",
-#   "plotly>=5.22.0"
+#   "pandas>=3.0.5",
+#   "plotly>=6.9.0"
 # ]
 # ///
 
